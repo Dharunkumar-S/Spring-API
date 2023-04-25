@@ -40,7 +40,7 @@ public class AccountController {
 		accService.deleteAccount(id);
 	}
 	
-	@PostMapping("/getAccount/{id}")
+	@GetMapping("/getAccount/{id}")
 	public Account getAccount(@PathVariable("id") int id) {
 		return accService.getAccount(id);
 	}

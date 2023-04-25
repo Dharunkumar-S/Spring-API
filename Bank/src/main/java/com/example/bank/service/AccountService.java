@@ -20,13 +20,13 @@ public class AccountService {
 	}
 
 	public Account saveAccount(Account a) {
-		Account obj=accRepo.save(a);
-		return obj;
+		Account acc=accRepo.save(a);
+		return acc;
 	}
 
 	public Account updateAccount(Account a) {
-		Account obj=accRepo.save(a);
-		return obj;
+		Account acc=accRepo.save(a);
+		return acc;
 	}
 
 	public void deleteAccount(int id) {
