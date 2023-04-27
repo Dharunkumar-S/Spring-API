@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -37,8 +40,15 @@ public class studentService {
 		return obj;
 	}
 	
-	public void deleteStudent(int regno) {
+	public boolean deleteStudent(int regno) {
+		boolean result=false;
 		studRepository.deleteById(regno);
+		Optional <student> s= studRepository.findById(regno);
+		if(s.isEmpty())
+		{
+			result=true;
+		}
+		return result;
 	}
 	
 	public student getStudent(int regno)
@@ -51,6 +61,25 @@ public class studentService {
 		return studRepository.findAll(Sort.by(Direction.DESC,field));
 //		return studRepository.findAll(Sort.by(field));
 		
+	}
+
+	public List<student> pagingStudents(int offset, int pageSize) {
+		Pageable paging=PageRequest.of(offset,pageSize);
+		Page<student> studData=studRepository.findAll(paging);
+		List<student> studList=studData.getContent();
+		return studList;
+	}
+	
+//	public Page<student> pagingStudents(int offset, int pageSize) {
+//		Pageable paging=PageRequest.of(offset,pageSize);
+//		Page<student> studData=studRepository.findAll(paging);
+//		return studData;
+//	}
+	public List<student> pagingAndSortingStudents(int offset, int pageSize,String field) {
+		Pageable paging=PageRequest.of(offset,pageSize).withSort(Sort.by(field));
+		Page<student> studData=studRepository.findAll(paging);
+		List<student> studList=studData.getContent();
+		return studList;
 	}
 }
  

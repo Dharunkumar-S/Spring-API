@@ -30,29 +30,5 @@ public class studentController {
 	{
 		return studService.saveStudent(s);
 	}
-	
-	@PutMapping(value="/updateStudent/{rno}")
-	public student updateStudent(@RequestBody student s,@PathVariable("rno") int regno)
-	{
-		return studService.updateStudent(s,regno);
-	}
-	
-	@DeleteMapping(value="/deleteStudent/{rno}")
-	public void deleteStudent(@PathVariable("rno") int regno)
-	{
-		studService.deleteStudent(regno);
-	}
-	
-	@GetMapping(value="/getStudent/{rno}")
-	public student getStudent(@PathVariable("rno") int regno)
-	{
-		return studService.getStudent(regno);
-	}
-	
-	 @GetMapping(value="/sortStudent/{field}")
-	 public List<student> sortStudent(@PathVariable("field") String field)
-	 {
-		 return studService.sortStudent(field);
-	 }
 	 
 }
