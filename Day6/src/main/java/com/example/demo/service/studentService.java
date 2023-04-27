@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.student;
@@ -47,7 +48,8 @@ public class studentService {
 	}
 	
 	public List<student> sortStudent(String field) {
-		return studRepository.findAll(Sort.by(field));
+		return studRepository.findAll(Sort.by(Direction.DESC,field));
+//		return studRepository.findAll(Sort.by(field));
 		
 	}
 }
