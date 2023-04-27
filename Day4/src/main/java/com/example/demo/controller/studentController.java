@@ -30,5 +30,5 @@ public class studentController {
 	{
 		return studService.saveStudent(s);
 	}
-	 
+	
 }
