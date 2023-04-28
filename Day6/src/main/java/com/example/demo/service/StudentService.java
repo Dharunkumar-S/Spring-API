@@ -86,5 +86,9 @@ public class StudentService {
 	public List<Student> fetchStudentsByNamePrefix(String prefix){
 		return studRepository.findBynameStartingWith(prefix);
 	}
+	
+	public List<Student> getStudentsByDepartment(String dep,String name) {
+		return studRepository.getStudentsByDepartment(dep, name);
+	}
 }
  

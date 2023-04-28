@@ -76,6 +76,11 @@ public class StudentController {
 	 @GetMapping("/fetchStudentsByNamePrefix")
 	 public List<Student> fetchStudentsByNamePrefix(@RequestParam String prefix){
 		return studService.fetchStudentsByNamePrefix(prefix);
-	}
+	 }
+	 
+	 @GetMapping("/fetchStudentsByDepartment/{dep}/{name}")
+	 public List<Student> fetchStudentsByDepartment(@PathVariable String dep,@PathVariable String name) {
+		 return studService.getStudentsByDepartment(dep, name);
+	 }
 
 }
