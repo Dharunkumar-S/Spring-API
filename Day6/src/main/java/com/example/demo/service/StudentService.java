@@ -11,27 +11,27 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.student;
-import com.example.demo.repository.studentRepository;
+import com.example.demo.model.Student;
+import com.example.demo.repository.StudentRepository;
 
 @Service
-public class studentService {
+public class StudentService {
 	@Autowired
-	studentRepository studRepository;
-	public List<student>  getAllStudents() {
-		List<student> studList=studRepository.findAll();
+	StudentRepository studRepository;
+	public List<Student>  getAllStudents() {
+		List<Student> studList=studRepository.findAll();
 		return studList;
 	}
 
-	public student saveStudent(student s) {
-		student obj=studRepository.save(s);
+	public Student saveStudent(Student s) {
+		Student obj=studRepository.save(s);
 		return obj;
 		//return studRepository.save(s);
 	}
 	
-	public  student updateStudent(student s,int rno) {
-		Optional<student> optional=studRepository.findById(rno);
-		student obj=null;
+	public  Student updateStudent(Student s,int rno) {
+		Optional<Student> optional=studRepository.findById(rno);
+		Student obj=null;
 		if(optional.isPresent())
 		{
 			obj=optional.get();
@@ -43,7 +43,7 @@ public class studentService {
 	public boolean deleteStudent(int regno) {
 		boolean result=false;
 		studRepository.deleteById(regno);
-		Optional <student> s= studRepository.findById(regno);
+		Optional<Student> s= studRepository.findById(regno);
 		if(s.isEmpty())
 		{
 			result=true;
@@ -51,22 +51,22 @@ public class studentService {
 		return result;
 	}
 	
-	public student getStudent(int regno)
+	public Student getStudent(int regno)
 	{
-		student s=studRepository.findById(regno).get();
+		Student s=studRepository.findById(regno).get();
 		return s;
 	}
 	
-	public List<student> sortStudent(String field) {
+	public List<Student> sortStudent(String field) {
 		return studRepository.findAll(Sort.by(Direction.DESC,field));
 //		return studRepository.findAll(Sort.by(field));
 		
 	}
 
-	public List<student> pagingStudents(int offset, int pageSize) {
+	public List<Student> pagingStudents(int offset, int pageSize) {
 		Pageable paging=PageRequest.of(offset,pageSize);
-		Page<student> studData=studRepository.findAll(paging);
-		List<student> studList=studData.getContent();
+		Page<Student> studData=studRepository.findAll(paging);
+		List<Student> studList=studData.getContent();
 		return studList;
 	}
 	
@@ -76,11 +76,15 @@ public class studentService {
 //		return studData;
 //	}
 	
-	public List<student> pagingAndSortingStudents(int offset, int pageSize,String field) {
+	public List<Student> pagingAndSortingStudents(int offset, int pageSize,String field) {
 		Pageable paging=PageRequest.of(offset,pageSize).withSort(Sort.by(field));
-		Page<student> studData=studRepository.findAll(paging);
-		List<student> studList=studData.getContent();
+		Page<Student> studData=studRepository.findAll(paging);
+		List<Student> studList=studData.getContent();
 		return studList;
+	}
+	
+	public List<Student> fetchStudentsByNamePrefix(String prefix){
+		return studRepository.findBynameStartingWith(prefix);
 	}
 }
  

@@ -10,30 +10,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.student;
-import com.example.demo.service.studentService;
+import com.example.demo.model.Student;
+import com.example.demo.service.StudentService;
 
 @RestController
-public class studentController {
+public class StudentController {
 	@Autowired
-	studentService studService;
+	StudentService studService;
 	
 	@GetMapping("/fetchStudent")
-	public List<student> getAllStudents() {
-		List<student> studList=studService.getAllStudents();
+	public List<Student> getAllStudents() {
+		List<Student> studList=studService.getAllStudents();
 		return studList;
 	}
 	
 	@PostMapping("/saveStudent")
-	public student savestudent(@RequestBody student s)
+	public Student savestudent(@RequestBody Student s)
 	{
 		return studService.saveStudent(s);
 	}
 	
 	@PutMapping("/updateStudent/{rno}")
-	public student updateStudent(@RequestBody student s,@PathVariable("rno") int regno)
+	public Student updateStudent(@RequestBody Student s,@PathVariable("rno") int regno)
 	{
 		return studService.updateStudent(s,regno);
 	}
@@ -46,19 +47,19 @@ public class studentController {
 	}
 	
 	@GetMapping("/getStudent/{rno}")
-	public student getStudent(@PathVariable("rno") int regno)
+	public Student getStudent(@PathVariable("rno") int regno)
 	{
 		return studService.getStudent(regno);
 	}
 	
 	 @GetMapping("/sortStudent/{field}")
-	 public List<student> sortStudent(@PathVariable("field") String field)
+	 public List<Student> sortStudent(@PathVariable("field") String field)
 	 {
 		 return studService.sortStudent(field);
 	 }
 	 
 	 @GetMapping("/pagingStudents/{offset}/{pageSize}")
-	 public List<student> pagingStudents(@PathVariable int offset,@PathVariable int pageSize){
+	 public List<Student> pagingStudents(@PathVariable int offset,@PathVariable int pageSize){
 		 return studService.pagingStudents(offset,pageSize);
 	 }
 	 
@@ -68,8 +69,13 @@ public class studentController {
 //	 }
 	 
 	 @GetMapping("/pagingStudents/{offset}/{pageSize}/{field}")
-	 public List<student> pagingAndSortingStudents(@PathVariable int offset,@PathVariable int pageSize,@PathVariable String field){
+	 public List<Student> pagingAndSortingStudents(@PathVariable int offset,@PathVariable int pageSize,@PathVariable String field){
 		 return studService.pagingAndSortingStudents(offset,pageSize,field);
 	 }
 	 
+	 @GetMapping("/fetchStudentsByNamePrefix")
+	 public List<Student> fetchStudentsByNamePrefix(@RequestParam String prefix){
+		return studService.fetchStudentsByNamePrefix(prefix);
+	}
+
 }
