@@ -62,15 +62,14 @@ public class studentController {
 		 return studService.pagingStudents(offset,pageSize);
 	 }
 	 
+//	 @GetMapping("pagingStudents/{offset}/{pageSize}")
+//	 public Page<student> pagingStudents(@PathVariable int offset,@PathVariable int pageSize){
+//		 return studService.pagingStudents(offset,pageSize);
+//	 }
 	 
 	 @GetMapping("/pagingStudents/{offset}/{pageSize}/{field}")
 	 public List<student> pagingAndSortingStudents(@PathVariable int offset,@PathVariable int pageSize,@PathVariable String field){
 		 return studService.pagingAndSortingStudents(offset,pageSize,field);
 	 }
-	 
-//	 @GetMapping("pagingStudents/{offset}/{pageSize}")
-//	 public Page<student> pagingStudents(@PathVariable int offset,@PathVariable int pageSize){
-//		 return studService.pagingStudents(offset,pageSize);
-//	 }
 	 
 }

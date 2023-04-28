@@ -75,6 +75,7 @@ public class studentService {
 //		Page<student> studData=studRepository.findAll(paging);
 //		return studData;
 //	}
+	
 	public List<student> pagingAndSortingStudents(int offset, int pageSize,String field) {
 		Pageable paging=PageRequest.of(offset,pageSize).withSort(Sort.by(field));
 		Page<student> studData=studRepository.findAll(paging);
