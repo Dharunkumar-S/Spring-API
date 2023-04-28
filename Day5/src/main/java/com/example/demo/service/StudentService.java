@@ -5,17 +5,17 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.student;
-import com.example.demo.repository.studentRepository;
+import com.example.demo.model.Student;
+import com.example.demo.repository.StudentRepository;
 
 @Service
-public class studentService {
+public class StudentService {
 	@Autowired
-	studentRepository studRepository;
+	StudentRepository studRepository;
 	
-	public  student updateStudent(student s,int rno) {
-		Optional<student> optional=studRepository.findById(rno);
-		student obj=null;
+	public  Student updateStudent(Student s,int rno) {
+		Optional<Student> optional=studRepository.findById(rno);
+		Student obj=null;
 		if(optional.isPresent())
 		{
 			obj=optional.get();

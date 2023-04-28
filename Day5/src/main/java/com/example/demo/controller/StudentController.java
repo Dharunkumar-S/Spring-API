@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.student;
-import com.example.demo.service.studentService;
+import com.example.demo.model.Student;
+import com.example.demo.service.StudentService;
 
 @RestController
-public class studentController {
+public class StudentController {
 	@Autowired
-	studentService studService;
+	StudentService studService;
 	
 	@PutMapping(value="/updateStudent/{rno}")
-	public student updateStudent(@RequestBody student s,@PathVariable("rno") int regno)
+	public Student updateStudent(@RequestBody Student s,@PathVariable("rno") int regno)
 	{
 		return studService.updateStudent(s,regno);
 	}
