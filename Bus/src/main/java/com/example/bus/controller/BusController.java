@@ -46,4 +46,19 @@ public class BusController {
 	public BusModel get(@PathVariable("id") int id) {
 		return bService.get(id);
 	}
+	
+	@GetMapping("/sort/{field}")
+	public List<BusModel> sortStudent(@PathVariable String field) {
+		return bService.sort(field);
+	}
+
+	@GetMapping("/rsort/{field}")
+	public List<BusModel> rsortStudent(@PathVariable String field) {
+		return bService.rsort(field);
+	}
+
+	@GetMapping("/paging/{offset}/{pageSize}")
+	public List<BusModel> pagingStudents(@PathVariable int offset, @PathVariable int pageSize) {
+		return bService.paging(offset, pageSize);
+	}
 }
