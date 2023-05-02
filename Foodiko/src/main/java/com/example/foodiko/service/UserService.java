@@ -19,7 +19,7 @@ public class UserService {
 	{
 		User user = uRepo.findByusername(username);
 		if(user == null) {
-			return "No User Found/nPlease Try Again!!!!";
+			return "No User Found Please Try Again!!!!";
 		}
 		else {
 			if(user.getPassword().equals(password)) {
