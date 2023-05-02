@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Student;
 import com.example.demo.repository.StudentRepository;
 
+import jakarta.transaction.Transactional;
+
+
 @Service
 public class StudentService {
 	@Autowired
@@ -90,5 +93,17 @@ public class StudentService {
 	public List<Student> getStudentsByDepartment(String dep,String name) {
 		return studRepository.getStudentsByDepartment(dep, name);
 	}
+	
+	//DML
+	@Transactional
+	public int deleteStudentByname(String name) {
+		return studRepository.deleteStudentByName(name);
+	}
+	
+	@Transactional
+	public int updateStudentByName(String dep,String name) {
+		return studRepository.updateStudentByName(dep, name);
+	}
+	
 }
  

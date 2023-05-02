@@ -82,5 +82,23 @@ public class StudentController {
 	 public List<Student> fetchStudentsByDepartment(@PathVariable String dep,@PathVariable String name) {
 		 return studService.getStudentsByDepartment(dep, name);
 	 }
+	 
+	 @DeleteMapping("/deleteStudentByName/{name}")
+	 public String deleteStudentByName(@PathVariable String name) {
+		 int result=studService.deleteStudentByname(name);
+		 if(result>0)
+			 return "Student record deleted";
+		 else
+			 return "Problem occured while deleting";
+	 }
+	 
+	 @PutMapping("/updateStudentByName/{dep}/{name}")
+	 public String updateStudentByName(@PathVariable String dep,@PathVariable String name) {
+		 int result=studService.updateStudentByName(dep,name);
+		 if(result>0)
+			 return "Student record updated";
+		 else
+			 return "Problem occured while updating";
+	 }
 
 }
