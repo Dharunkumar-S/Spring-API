@@ -16,4 +16,9 @@ public class PersonService {
 	public List<Person> fetchAllPersons(){
 		return personRepo.findAll();
 	}
+	
+	public Person savePersons(Person p) {
+		return personRepo.save(p);
+	}
+	
 }
