@@ -14,7 +14,6 @@ import jakarta.persistence.Table;
 @Table(name="author")
 public class Author {
 	@Id
-	@GeneratedValue
 	private int authorid;
 	private String authorbook;
 	@OneToMany(cascade = CascadeType.ALL)

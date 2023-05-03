@@ -17,7 +17,7 @@ public interface StudentRepository extends JpaRepository<Student,Integer>{
 	public List<Student> getStudentsByDepartment(String dep,String name);
 	
 	//named parameter
-	@Query("select s from Student s where s.dep=:dept")
+	@Query("select s from Student s where s.dep=:dep")
 	public List<Student> getStudentsByDepartment(String dep);
 	
 	//DML
