@@ -1,10 +1,14 @@
 package com.example.foodiko.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.foodiko.model.User;
 import com.example.foodiko.repository.UserRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -29,6 +33,15 @@ public class UserService {
 				return "Login Failed";
 			}
 		}
+	}
+
+	public List<User> getAllUser() {
+		List<User> uList=uRepo.findAll();
+		return uList;
+	}
+
+	public void deleteUser(int id) {
+		uRepo.deleteById(id);
 	}
 	
 }
