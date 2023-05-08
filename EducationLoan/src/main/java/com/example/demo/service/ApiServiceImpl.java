@@ -6,20 +6,22 @@ import com.example.demo.model.LoanApplicationModel;
 import com.example.demo.model.UserModel;
 
 public interface ApiServiceImpl {
-	
+
 	public String login(String email, String password);
 
 	public UserModel signup(UserModel u);
 
-	public List<LoanApplicationModel> getAllLoans();
-
 	public List<UserModel> getAllUsers();
 
-	public LoanApplicationModel viewLoan(int id);
+	public UserModel getAllUserById(int id);
+
+	public UserModel updateUser(UserModel u, String id);
 
 	public void deleteUser(int id);
 
-	public UserModel updateUser(UserModel u, String id);
+	public LoanApplicationModel viewLoan(int id);
+
+	public List<LoanApplicationModel> getAllLoans();
 
 	public LoanApplicationModel saveLoan(LoanApplicationModel l);
 

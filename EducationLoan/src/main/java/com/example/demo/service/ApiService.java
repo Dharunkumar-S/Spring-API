@@ -75,4 +75,9 @@ public class ApiService implements ApiServiceImpl {
 	public void deleteLoan(int id) {
 		apiRepo1.deleteById(id);
 	}
+
+	@Override
+	public UserModel getAllUserById(int id) {
+		return apiRepo.findById(id).get();
+	}
 }

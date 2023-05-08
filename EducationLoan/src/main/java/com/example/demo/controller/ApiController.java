@@ -36,6 +36,11 @@ public class ApiController {
 		return apiServImpl.getAllUsers();
 	}
 
+	@GetMapping("/user/getUser/{id}")
+	public UserModel getAllUserById(@PathVariable int id) {
+		return apiServImpl.getAllUserById(id);
+	}
+
 	@PutMapping("/user/updateUser/{id}")
 	public UserModel updateUser(@RequestBody UserModel u, @PathVariable String id) {
 		return apiServImpl.updateUser(u, id);
