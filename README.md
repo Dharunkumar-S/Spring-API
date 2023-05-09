@@ -1,18 +1,15 @@
 ## Spring Boot
-<hr/>
 
 #### Review 1 - [BANK](https://github.com/Dharunkumar-S/Spring-API/tree/main/Bank)
 #### Review 2 - [FOODIKO](https://github.com/Dharunkumar-S/Spring-API/tree/main/Foodiko)
 #### Review 3 - [FOODIKO](https://github.com/Dharunkumar-S/Spring-API/tree/main/Foodiko)
 
 ## Final Review
-<hr/>
 
 #### REST API - [EducationLoan](https://github.com/Dharunkumar-S/Spring-API/tree/main/EducationLoan)
 #### REACT JSX - [Education Loan React](https://github.com/Dharunkumar-S/Spring-API/tree/main/EducationLoan%20React)
 
 ## Daily Projects
-<hr/>
 
 #### Day - 01 : RequestParam & PathVariable
 #### Day - 02 : JSON Annotation
